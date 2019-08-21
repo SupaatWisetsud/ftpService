@@ -1,4 +1,9 @@
-<?php 
+
+<?php
+    /**
+     * 
+     * เมื่อสมัครเสร็จให้ restart ftp service อันนี่ไปหาวิธีไม่ให้ restart เอา
+     */
     ob_start();
     session_start();
     if(isset($_POST['submit'])){
