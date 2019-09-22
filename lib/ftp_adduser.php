@@ -1,14 +1,12 @@
 <?php 
 function add_ftp_user ($userid, $password, $dir) {
+
     $filezilla = 'C:\xampp\FileZillaFTP\FileZilla Server.xml';
 
     /*** create a SimpleXML object ***/ 
-    if( ! $xml = simplexml_load_file($filezilla) ) 
-    { 
+    if( ! $xml = simplexml_load_file($filezilla) ){ 
         echo "Unable to load XML file"; 
-    } 
-    else 
-    { 
+    }else{ 
         // print_r($xml->Users);
         $user = $xml->Users->addChild('User');
         $user->addAttribute('Name', $userid);

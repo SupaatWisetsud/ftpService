@@ -6,11 +6,21 @@
      */
     ob_start();
     session_start();
-    if(isset($_POST['submit'])){
-        $_SESSION['ftp_username'] = $_POST['username'];
-        $_SESSION['ftp_password'] = $_POST['password'];
+    require('connectDB.php');
 
-        header('Location: index.php');
+    if(isset($_POST['submit'])){
+        
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+
+        $result = mysqli_query($condb, "SELECT * FROM tb_accout WHERE ac_username = '$username' AND ac_password = '$password' ");
+        
+        if(mysqli_num_rows($result)){
+            
+            $result = mysqli_fetch_assoc($result);
+            
+            print_r($result);
+        }
     }
 ?>
 <!DOCTYPE html>
